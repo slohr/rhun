@@ -76,7 +76,7 @@ with tempfile.TemporaryDirectory(prefix='rhun-windows-', dir=OUT) as temporary:
 
     def golden(name, exe, arguments=()):
         env = environment(name)
-        if name == 'grammars':
+        if name in ('grammars', 'themes'):
             env['XDG_CONFIG_HOME'] = winpath(ROOT / 'tests/data/config')
         if name == 'config':
             env['XDG_CONFIG_HOME'] = winpath(ROOT / 'tests/data/config-reload')
@@ -120,6 +120,9 @@ with tempfile.TemporaryDirectory(prefix='rhun-windows-', dir=OUT) as temporary:
             env=dict(os.environ, RHUN_TEST_EXE=str(OUT / 'rhun.com'))))
         check('agents/metadata', lambda: subprocess.run(
             [sys.executable, str(ROOT / 'tests/agents.py')], check=True,
+            env=dict(os.environ, RHUN_TEST_EXE=str(OUT / 'rhun.com'))))
+        check('theme/chrome', lambda: subprocess.run(
+            [sys.executable, str(ROOT / 'tests/theme-chrome.py')], check=True,
             env=dict(os.environ, RHUN_TEST_EXE=str(OUT / 'rhun.com'))))
 
     def ui(name):

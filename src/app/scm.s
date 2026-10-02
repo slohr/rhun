@@ -1283,7 +1283,7 @@ draw_branch:
     mov edx, r13d
     M ecx, MI_ICON
     mov r8d, r15d
-    COLOR r9d, T_MUTED
+    COLOR r9d, T_UI_MUTED
     call ui_icon_center
     mov r12d, [rip + in_x]
     add r12d, [rip + g_mt + 4*MI_ICON]
@@ -1296,7 +1296,7 @@ draw_branch:
     mov esi, r12d
     mov edx, r13d
     mov ecx, r15d
-    COLOR r9d, T_FG
+    COLOR r9d, T_UI_FG
     call ui_text_c
     add eax, [rip + g_mt + 4*MI_8]
     mov r12d, eax
@@ -1323,7 +1323,7 @@ draw_branch:
     sub eax, r12d
     jle 9f
     push rax
-    COLOR eax, T_MUTED
+    COLOR eax, T_UI_MUTED
     push rax
     lea rdi, [rip + g_face_small]
     mov esi, r12d
@@ -1577,10 +1577,10 @@ draw_button:
     COLOR r9d, T_BORDER
     call gfx_frame
     add rsp, 16
-    COLOR r9d, T_FG
+    COLOR r9d, T_UI_FG
     test ebx, ENABLED
     jnz 3f
-    COLOR r9d, T_MUTED
+    COLOR r9d, T_UI_MUTED
 3:  mov edi, r12d
     mov esi, r13d
     mov edx, r14d
@@ -1650,7 +1650,7 @@ draw_group:
     mov esi, [rip + in_x]
     mov edx, r13d
     mov ecx, r15d
-    COLOR r9d, T_MUTED
+    COLOR r9d, T_UI_MUTED
     call ui_text_c
     add eax, [rip + g_mt + 4*MI_8]
     mov r12d, eax
@@ -1678,7 +1678,7 @@ draw_group:
     shr r8d, 1
     COLOR r9d, T_HOVER
     call gfx_round_rect
-    COLOR eax, T_FG
+    COLOR eax, T_UI_FG
     push rax
     push rax
     lea rdi, [rip + g_face_small]
@@ -1856,7 +1856,7 @@ draw_file:
     sub eax, [rip + g_mt + 4*MI_20]
     jle 6f
     push rax
-    COLOR eax, T_FG
+    COLOR eax, T_UI_FG
     push rax
     lea rdi, [rip + g_face_ui]
     mov esi, [rip + in_x]
